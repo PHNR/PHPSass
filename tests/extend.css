@@ -1,12 +1,12 @@
 .error,
 .seriousError,
 .hoverlink {
-  border: 1px red;
-  background-color: #ffdddd; }
+	border: 1px red;
+	background-color: #FFDDDD; }
 
 .seriousError,
 .hoverlink {
-  border-width: 3px; }
+	border-width: 3px; }
 
 .comment a:hover,
 .comment .hoverlink {

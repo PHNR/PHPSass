@@ -8,7 +8,7 @@
 /*
  * test unused placeholder
  */
- /* 
+/*
  * test placeholder descendant selector
  */
 #context .bar a {
@@ -19,6 +19,7 @@
  */
 .bar .baz {
 	color: blue; }
+
 /*
  * test placeholder selector as modifier
  */

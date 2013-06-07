@@ -1,6 +1,8 @@
 /* test basic placeholder usage, with multiple extenders */
 %foo { color: blue; }
+
 .bar { @extend %foo; }
+
 .baz { @extend %foo; }
 
 /* test unused placeholder */
@@ -10,6 +12,7 @@
 #context %context a {
 	color: blue;
 }
+
 .bar {
 	@extend %context;
 }
@@ -23,7 +26,9 @@
 a%four.baz {
 	color: blue;
 }
+
 .bar { @extend %four; }
+
 /* the div should not be rendered as it results in adiv (invalid) */
 div { @extend %four; }
 
@@ -41,6 +46,7 @@ $in: 'inter';
 %#{$in} {
 	color: blue;
 }
+
 .inter {
 	@extend %inter;
 }
@@ -53,6 +59,7 @@ $in: 'inter';
 		}
 	}
 }
+
 .media {
 	c: d;
 }

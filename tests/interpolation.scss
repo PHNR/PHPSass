@@ -29,6 +29,7 @@ $bar: bar;
 %#{$bar} {
 	o: k
 }
+
 .bar {
 	@extend %bar;
 }
@@ -48,7 +49,7 @@ $feature: -webkit-min-device-pixel-ratio;
 $value: 1.5;
 
 @media #{$media} and ($feature: $value) {
-  webkit-only {
-  	color: green;
-  }
+	webkit-only {
+		color: green;
+	}
 }
