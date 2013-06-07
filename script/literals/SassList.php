@@ -30,10 +30,6 @@ class SassList extends SassLiteral {
       $this->value = $value;
       $this->separator = ($separator == 'auto' ? ', ' : $separator);
     }
-    else if ($value == '()'){
-      $this->value = array();
-      $this->separator = ($separator == 'auto' ? ', ' : $separator);
-    }
     else if (list($list, $separator) = $this->_parse_list($value, $separator, true, SassScriptParser::$context)) {
       $this->value = $list;
       $this->separator = ($separator == ',' ? ', ' : ' ');
@@ -134,11 +130,6 @@ class SassList extends SassLiteral {
   }
 
   public static function _parse_list($list, $separator = 'auto', $lex = true, $context = null) {
-    if ($lex) {
-      $context = new SassContext($context);
-      $list = SassScriptParser::$instance->evaluate($list, $context);
-      $list = $list->toString();
-    }
     if ($separator == 'auto') {
       $separator = ',';
       $list = $list = self::_build_list($list, ',');

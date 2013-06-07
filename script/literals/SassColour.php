@@ -915,13 +915,4 @@ class SassColour extends SassLiteral {
     return (preg_match(self::$regex, strtolower($subject), $matches) ?
       $matches[0] : false);
   }
-
-  public function nth($i) {
-    if ($i == 1) return clone $this;
-    return new SassBoolean(false);
-  }
-
-  public function length() {
-    return 1;
-  }
 }

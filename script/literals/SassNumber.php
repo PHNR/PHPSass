@@ -550,7 +550,8 @@ class SassNumber extends SassLiteral {
      * @return SassBoolean|SassNumber
      */
     public function nth($i) {
-        if ($i == 1 && isset($this->value)) {
+        $i = $i - 1; # SASS uses 1-offset arrays
+        if (isset($this->value)) {
             return new SassNumber($this->value);
         }
         return new SassBoolean(false);

@@ -20,8 +20,8 @@ class SassScriptFunction {
   /**@#+
    * Regexes for matching and extracting functions and arguments
    */
-  const MATCH = '/^(((-\w)|(\w))[-\w:.]*)\(/';
-  const MATCH_FUNC = '/^((?:(?:-\w)|(?:\w))[-\w:.]*)\((.*)\)/';
+  const MATCH = '/^(((-\w)|(\w))[-\w]*)\(/';
+  const MATCH_FUNC = '/^((?:(?:-\w)|(?:\w))[-\w]*)\((.*)\)/';
   const SPLIT_ARGS = '/\s*((?:[\'"].*?["\'])|(?:.+?(?:\(.*\).*?)?))\s*(?:,|$)/';
   const NAME = 1;
   const ARGS = 2;
@@ -254,29 +254,13 @@ class SassScriptFunction {
     }
 
     // print_r(array($required, $provided, $_required));
-    $provided_copy = $provided;
 
     foreach ($required as $name=>$default) {
-      if ($default === null && strpos($name, '=') !== FALSE) {
-          list($name, $default) = explode('=', $name);
-          $name = trim($name);
-          $default = trim($default);
-      }
       if (count($provided)) {
         $arg = array_shift($provided);
       }
       elseif ($default !== NULL) {
         $arg = $default;
-
-        // for mixins with default values that refer to other arguments
-        // (e.g. border-radius($topright: 0, $bottomright: $topright, $bottomleft: $topright, $topleft: $topright)
-        if (is_string($default) && $default[0]=='$') {
-          $referred = trim(trim($default, '$'));
-          $pos = array_search($referred, array_keys($required));
-          if ($pos!==false && array_key_exists($pos, $provided_copy)) {
-            $arg = $provided_copy[$pos];
-          }
-        }
       }
       else {
         throw new SassMixinNodeException("Function::$name: Required variable ($name) not given.\nFunction defined: " . $source->token->filename . '::' . $source->token->line . "\nFunction used", $source);
