@@ -21,10 +21,10 @@
  * @package      PHamlP
  * @subpackage   Sass
  */
-
-require_once('SassFile.php');
-require_once('SassException.php');
-require_once('tree/SassNode.php');
+defin('DIR_SEP', DIRECTORY_SEPARATOR);
+include(dirname(__FILE__).DIR_SEP.'SassFile.php');
+include(dirname(__FILE__).DIR_SEP.'SassException.php');
+include(dirname(__FILE__).DIR_SEP.'tree/SassNode.php');
 
 /**
  * SassParser class.
