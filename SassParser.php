@@ -21,7 +21,7 @@
  * @package      PHamlP
  * @subpackage   Sass
  */
-defin('DIR_SEP', DIRECTORY_SEPARATOR);
+define('DIR_SEP', DIRECTORY_SEPARATOR);
 include(dirname(__FILE__).DIR_SEP.'SassFile.php');
 include(dirname(__FILE__).DIR_SEP.'SassException.php');
 include(dirname(__FILE__).DIR_SEP.'tree/SassNode.php');
